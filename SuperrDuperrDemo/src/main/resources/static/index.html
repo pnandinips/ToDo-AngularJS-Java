@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SuperrDuperrApp">
+  <head>
+    <meta charset="utf-8">
+    <title>SuperrDuperr 1.0</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/superrDuperrApp.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/superrduperr.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  
+  </head>
+
+  <body>
+    <div class="container" ng-controller="superrDuperrCtrl">
+        <h1>SuperrDuperr ToDo Manager</h1>
+
+        <div class="row">
+          <div class="col-lg-8">
+            <input id="focus-me" class="form-control" type="text" placeholder="Enter New List Name!" ng-model="newToDoItemList" required></input>
+          </div>
+            <button class="btn btn-primary" ng-disabled="!newToDoItemList" ng-click="AddToDoItemList(newToDoItemList)">Add New ToDo List</button>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-lg-2">
+            <div class="selectbox-style blue selectbox-semi-square" ng-hide="foundLists=='No'">
+              <select ng-model="selectedListName">
+                  <option ng-repeat="(key, value) in toDoItemLists track by $index">{{key}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <input class="form-control" type="text" placeholder="What's ToDo!" ng-model="newToDoItemValue" required></input>
+          </div>
+
+          <button class="btn btn-primary" ng-disabled="!(newToDoItemValue) || !(selectedListName)" ng-click="AddToDoItem(newToDoItemValue,selectedListName)">Add New ToDo</button>
+        </div>
+
+        <div class="alert" style="width:400px;margin-left:100px;" ng-show="foundLists=='No'">
+          <h2 class="text text-center">No ToDos Found!!</h2>
+        </div>
+
+        <div ng-show="foundLists=='Yes'">
+          <h2>My ToDo Items:</h2>
+
+          <div ng-repeat="(listName, toDoList) in toDoItemLists track by $index">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h4 class="panel-title">
+                          <a data-toggle="collapse" href="#collapse{{$index}}">
+                            <span style="color:#B22222; font-family:'Roboto', sans-serif; font-size:large;">{{listName}}</span>
+                          </a>
+                      </h4>
+                  </div>
+                  <div id="collapse{{$index}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                       <table class="table table-bordered table-striped">
+                           <tbody>
+                               <tr ng-repeat="(key,toDoItem) in toDoList track by $index">
+                                 <td>
+                                    <del style="color:red; font-family:'Roboto', sans-serif; font-size:large;" ng-if="toDoItem.completed == true">{{toDoItem.toDo}}</del>
+                                    <span style="color:green; font-family:'Roboto', sans-serif; font-size:large;" ng-if="toDoItem.completed == false">{{toDoItem.toDo}}</span>
+                                 </td>
+                                 <td  style="width:140px;text-align:center;">
+                                    <label class="btn btn-danger"><input type="checkbox" ng-model="toDoItem.completed" ng-change="UpdateCheckbox(toDoItem.completed, toDoItem.toDo, listName)">
+                                        <span ng-if="toDoItem.completed == false">Mark Complete</span>
+                                        <span ng-if="toDoItem.completed == true">Restore</span>
+                                    </label>
+                                  </td>
+                                 <td  style="width:70px;text-align:center;"><button class="btn btn-mini btn-danger" ng-click="DeleteToDoItem(toDoItem.toDo,listName)">Delete</button></td>
+                               </tr>
+                           </tbody>
+                       </table>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+  </div>
+</body>
+</html>
