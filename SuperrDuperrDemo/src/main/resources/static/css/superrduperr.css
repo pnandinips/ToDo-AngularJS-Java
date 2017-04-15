@@ -1,34 +1,68 @@
-.dropdown {
-  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
-  height: 32px;
-  overflow: hidden;
-  width: 180px;
+input, select {
+  margin-bottom: 15px;
 }
 
+.dropdown, 
 .dropdown select {
-  background: transparent;
-  border: none;
-  font-size: 15px;
-  height: 29px;
-  padding: 5px; /* If you add too much padding here, the options won't show in IE */
-  width: 200px;
- -webkit-appearance: none; 
- -moz-appearance: none;
- appearance: none;
+ height: 40px;
+ width: 100%;
+ padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+  color: #555;
+}
+
+.btn-primary {
+  width: 100%;
 }
 
 .clearfix {
   overflow: auto;
 }
 
+.app-title {
+    background: aliceblue;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.list-section {
+  margin-top: 20px;
+}
+
 .todo-form > .row {
   margin-bottom: 20px;
 }
 
-.todo-list,
-.todo-form {
-  float: left;
-  width: 50%;
+.todo-empty-list {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.todo-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.todo-list-title {
+  background: #ececec;
+  padding: 10px 10px;
+}
+
+.todo-actions {
+  margin-right: 10px;
+}
+
+.todo-item {
+  width: 80%;
+}
+
+.todo-list {
+  border-bottom: 1px solid #ccc;
 }
 
 
