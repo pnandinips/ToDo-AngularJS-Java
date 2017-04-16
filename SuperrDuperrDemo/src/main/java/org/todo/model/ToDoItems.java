@@ -12,6 +12,7 @@ public class ToDoItems {
 	}
 
 	public void setToDoItems(Map<String, ArrayList<ToDoItem>> toDoItems) {
-		this.toDoItems = toDoItems;
+		if(toDoItems != null)
+			this.toDoItems = toDoItems;
 	}
 }

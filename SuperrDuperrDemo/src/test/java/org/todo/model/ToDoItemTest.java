@@ -83,7 +83,7 @@ public class ToDoItemTest extends TestCase {
 		 item1.setCompleted(false);
 		 
 		 ToDoItem item2 = new ToDoItem();
-		 item2.setId(new Long(1000));
+		 item2.setId(new Long(2000));
 		 item2.setToDo("Bank Work");
 		 item2.setTag("");
 		 item2.setListName("personnal");

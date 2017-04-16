@@ -27,7 +27,9 @@ public class ToDoServiceImpl implements ToDoService{
 
 	@Override
 	public void addNewList(String newListName) {
-		toDoItems.getToDoItems().put(newListName, new ArrayList<ToDoItem>());	
+		
+		if(newListName != null)
+			toDoItems.getToDoItems().put(newListName, new ArrayList<ToDoItem>());	
 	}
 
 	@Override
@@ -38,7 +40,7 @@ public class ToDoServiceImpl implements ToDoService{
 		
 		for(ToDoItem toDoItem : toDoItemList){
 			
-			if(toDoItem.equals(newToDoItem)){
+			if(newToDoItem != null && toDoItem.equals(newToDoItem)){
 				// item already exists. So update the item. 
 				foundMatch = true;
 				toDoItem.setCompleted(newToDoItem.isCompleted());
@@ -48,7 +50,7 @@ public class ToDoServiceImpl implements ToDoService{
 			}	
 		}
 		
-		if(!foundMatch){
+		if(newToDoItem != null && !foundMatch){
 			toDoItemList.add(newToDoItem);
 		}
 	}

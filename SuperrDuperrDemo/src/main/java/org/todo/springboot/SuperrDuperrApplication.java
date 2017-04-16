@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(scanBasePackages={"org.todo"})
 @RestController
-public class SuperrDuperrDemoApplication {
+public class SuperrDuperrApplication {
 	
 	@Autowired
 	private ToDoService toDoService;
@@ -44,6 +44,6 @@ public class SuperrDuperrDemoApplication {
     }
 
 	public static void main(String[] args) {
-		SpringApplication.run(SuperrDuperrDemoApplication.class, args);
+		SpringApplication.run(SuperrDuperrApplication.class, args);
 	}
 }
