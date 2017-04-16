@@ -1,5 +1,4 @@
 # SuperrDuperrToDoApp
-#some
 
 
 
