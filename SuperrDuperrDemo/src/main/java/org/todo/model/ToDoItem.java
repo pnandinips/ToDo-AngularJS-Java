@@ -21,9 +21,6 @@ public class ToDoItem {
 	
 	
 	private boolean completed;
-	
-	@DateTimeFormat(iso=ISO.DATE)
-	Date reminder; 
 		
 	public String getToDo() {
 		return toDo;
@@ -48,15 +45,6 @@ public class ToDoItem {
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
-	
-	public Date getReminder() {
-		return reminder;
-	}
-
-	public void setReminder(Date reminder) {
-		this.reminder = reminder;
-	}	
-	
 	
 	public Long getId() {
 		return id;
