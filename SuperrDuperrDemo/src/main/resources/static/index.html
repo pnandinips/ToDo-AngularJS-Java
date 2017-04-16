@@ -3,21 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Todo App</title>
-   
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/superrduperr.css">
-  
-  
   </head>
 
   <body>
     <div class="container todo-container" ng-controller="superrDuperrCtrl">
+      <section class="form-section">
         <h1 class="app-title">Super Duper Todo List</h1>
 
         <h5>Enter Todo List Name</h5>
         <div class="todo-list-entry">
-            <input id="focus-me" class="form-control" type="text" placeholder="Enter New List Name!" ng-model="newToDoItemList" required></input>
+            <input id="focus-me" class="form-control" type="text" placeholder="Enter list" ng-model="newToDoItemList" required></input>
             <button class="btn btn-primary" ng-disabled="!newToDoItemList" ng-click="AddToDoItemList(newToDoItemList)"> Add Todo List</button>
         </div>
         <hr />
@@ -26,48 +24,51 @@
         <div class="todo-item-entry">
             <div ng-hide="foundLists=='No'">
               <select ng-model="selectedListName"  class="dropdown">
+                  <option selected disabled>Choose list</option>
                   <option ng-repeat="(key, value) in toDoItemLists track by $index">{{key}}</option>
               </select>
             </div>
 
-            <input class="form-control" type="text" placeholder="What's ToDo!" ng-model="newToDoItemValue" required></input>
+            <input class="form-control" type="text" placeholder="Enter todo item" ng-model="newToDoItemValue" required></input>
 
             <button class="btn btn-primary" ng-disabled="!(newToDoItemValue) || !(selectedListName)" ng-click="AddToDoItem(newToDoItemValue,selectedListName)">Add Todo</button>
         </div>
+      </section>
 
-        <p class="todo-empty-list" ng-show="foundLists=='No'">No ToDos Found!!</p>
+      <section class="empty-section" ng-show="foundLists=='No'">
+        <p>No Todos Yet. Add todo's using the form.</p>
+      </section>
 
-        <section class="list-section" ng-show="foundLists=='Yes'">
-          <h3>Todo's':</h3>
-          <div ng-repeat="(listName, toDoList) in toDoItemLists track by $index">
-              <h4 class="todo-list-title">
-                  <a data-toggle="collapse" href="#collapse{{$index}}">
-                    <span>{{listName}}</span>
-                  </a>
-              </h4>
-              
-             <ul class="todo-list" ng-repeat="(key,toDoItem) in toDoList track by $index">
-               <li class="todo-item">
-                  <del ng-if="toDoItem.completed == true">{{toDoItem.toDo}}</del>
-                  <span ng-if="toDoItem.completed == false">{{toDoItem.toDo}}</span>
-               </li>
-               <li class="todo-actions">
-                  <label class="btn">
-                  <input type="checkbox" ng-model="toDoItem.completed" ng-change="UpdateCheckbox(toDoItem.completed, toDoItem.toDo, listName)">
-                      <span ng-if="toDoItem.completed == false">Complete</span>
-                      <span ng-if="toDoItem.completed == true">Restore</span>
-                  </label>
-                </li>
-               <li class="todo-delete">
-                <button class="btn btn-mini btn-danger" ng-click="DeleteToDoItem(toDoItem.toDo,listName)">Delete</button>
+      <section class="list-section" ng-show="foundLists=='Yes'">
+        <h3>Todo's:</h3>
+        <div ng-repeat="(listName, toDoList) in toDoItemLists track by $index">
+            <h4 class="todo-list-title">
+                <a data-toggle="collapse" href="#collapse{{$index}}">
+                  <span>{{listName}}</span>
+                </a>
+            </h4>
+            
+           <ul class="todo-list" ng-repeat="(key,toDoItem) in toDoList track by $index">
+             <li class="todo-item">
+                <del ng-if="toDoItem.completed == true">{{toDoItem.toDo}}</del>
+                <span ng-if="toDoItem.completed == false">{{toDoItem.toDo}}</span>
+             </li>
+             <li class="todo-actions">
+                <label class="btn">
+                <input type="checkbox" ng-model="toDoItem.completed" ng-change="UpdateCheckbox(toDoItem.completed, toDoItem.toDo, listName)">
+                    <span ng-if="toDoItem.completed == false">Complete</span>
+                    <span ng-if="toDoItem.completed == true">Restore</span>
+                </label>
               </li>
-             </ul>
-          </section>
-        </div>
-  </div>
-</body>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-     <script src="js/angular.min.js"></script>
-    <script src="js/superrDuperrApp.js"></script>
+             <li class="todo-delete">
+              <button class="btn btn-mini btn-danger" ng-click="DeleteToDoItem(toDoItem.toDo,listName)">Delete</button>
+            </li>
+           </ul>
+        </section>
+    </div>
+  </body>
+     <script src="js/vendor/angular.min.js"></script>
+     <script src="js/app/superrDuperrService.js"></script>
+     <script src="js/app/superrDuperrCtrl.js"></script>
+    <script src="js/app/superrDuperrApp.js"></script>
 </html>
