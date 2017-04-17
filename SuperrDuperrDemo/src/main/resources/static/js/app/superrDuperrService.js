@@ -1,44 +1,47 @@
 function superrDuperrApi($http) {
 
-	var REST_SERVICE_URI = 'http://localhost:8080/SuperrDuperr/';
+	var API_URL = 'http://localhost:8080/SuperrDuperr/';
 	
     this.AddToDoItemList = function(toDoItemListName){
-	    return $http.post(REST_SERVICE_URI + 'toDo/addNewList/'+ toDoItemListName);
+	    return $http.post(API_URL + 'toDo/addNewList/'+ toDoItemListName);
   	}
 
   	this.AddToDoItem = function(toDoItemValue,selectedList){
-	    var postObject = new Object();
-	    postObject.toDo = toDoItemValue;
-	    postObject.tag = "";
-	    postObject.listName = selectedList;
-	    postObject.completed = false;
+	    var todoObj = {
+		    toDo: toDoItemValue,
+		    tag: "",
+		    listName: selectedList,
+		    completed: false
+	    }
 
-	    return $http.post(REST_SERVICE_URI + 'toDo/addItem/'+ selectedList, postObject)
+	    return $http.post(API_URL + 'toDo/addItem/'+ selectedList, todoObj)
 	    
   	}
 
   	this.UpdateCheckbox = function(completedFlag, toDoItemValue, selectedList){
-	    var postObject = new Object();
-	    postObject.toDo = toDoItemValue;
-	    postObject.tag = "";
-	    postObject.listName = selectedList;
-	    postObject.completed = completedFlag;
+	    var todoObj = {
+		    toDo: toDoItemValue,
+		    tag: "",
+		    listName: selectedList,
+		    completed: completedFlag
+	    }
 
-	    return $http.post(REST_SERVICE_URI + 'toDo/addItem/' + selectedList, postObject);
+	    return $http.post(API_URL + 'toDo/addItem/' + selectedList, todoObj);
 
   	}
 
   	this.DeleteToDoItem = function(toDoItemValue,selectedList){
-        var postObject = new Object();
-        postObject.toDo = toDoItemValue;
-        postObject.tag = "";
-        postObject.listName = selectedList;
-        postObject.completed = false;
+        var todoObj = {
+		    toDo: toDoItemValue,
+		    tag: "",
+		    listName: selectedList,
+		    completed: false
+	    }
 
-        return $http.post(REST_SERVICE_URI + 'toDo/deleteItem/' + selectedList, postObject);
+        return $http.post(API_URL + 'toDo/deleteItem/' + selectedList, todoObj);
     }
 
 	this.getAllToDoItems = function(){
-        return $http.get(REST_SERVICE_URI + 'toDo/getAllItems');
+        return $http.get(API_URL + 'toDo/getAllItems');
     }
 }

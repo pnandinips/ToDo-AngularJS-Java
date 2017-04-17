@@ -22,7 +22,7 @@
 
         <h5>Enter Todo items</h5>
         <div class="todo-item-entry">
-            <div ng-hide="foundLists=='No'">
+            <div ng-hide="!foundLists">
               <select ng-model="selectedListName"  class="dropdown">
                   <option selected disabled>Choose list</option>
                   <option ng-repeat="(key, value) in toDoItemLists track by $index">{{key}}</option>
@@ -35,11 +35,11 @@
         </div>
       </section>
 
-      <section class="empty-section" ng-show="foundLists=='No'">
+      <section class="empty-section" ng-show="!foundLists">
         <p>No Todos Yet. Add todo's using the form.</p>
       </section>
 
-      <section class="list-section" ng-show="foundLists=='Yes'">
+      <section class="list-section" ng-show="foundLists">
         <h3>Todo's:</h3>
         <div ng-repeat="(listName, toDoList) in toDoItemLists track by $index">
             <h4 class="todo-list-title">
@@ -50,14 +50,14 @@
             
            <ul class="todo-list" ng-repeat="(key,toDoItem) in toDoList track by $index">
              <li class="todo-item">
-                <del ng-if="toDoItem.completed == true">{{toDoItem.toDo}}</del>
-                <span ng-if="toDoItem.completed == false">{{toDoItem.toDo}}</span>
+                <del ng-if="toDoItem.completed">{{toDoItem.toDo}}</del>
+                <span ng-if="!toDoItem.completed">{{toDoItem.toDo}}</span>
              </li>
              <li class="todo-actions">
                 <label class="btn">
                 <input type="checkbox" ng-model="toDoItem.completed" ng-change="UpdateCheckbox(toDoItem.completed, toDoItem.toDo, listName)">
-                    <span ng-if="toDoItem.completed == false">Complete</span>
-                    <span ng-if="toDoItem.completed == true">Restore</span>
+                    <span ng-if="!toDoItem.completed">Complete</span>
+                    <span ng-if="toDoItem.completed">Restore</span>
                 </label>
               </li>
              <li class="todo-delete">
