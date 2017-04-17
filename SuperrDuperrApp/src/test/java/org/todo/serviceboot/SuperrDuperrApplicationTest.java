@@ -30,8 +30,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
-/**
- * @author Josh Long
+/*
+ * @author Nandini Palaniswamy
+ *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SuperrDuperrApplication.class)
@@ -44,8 +45,6 @@ public class SuperrDuperrApplicationTest {
             Charset.forName("utf8"));
 
     private MockMvc mockMvc;
-
-    private String userName = "bdussault";
 
     private HttpMessageConverter mappingJackson2HttpMessageConverter;
 

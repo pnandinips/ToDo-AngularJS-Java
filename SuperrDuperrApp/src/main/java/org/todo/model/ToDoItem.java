@@ -5,9 +5,11 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-
+/*
+ * ToDoItem POJO class
+ *  @author Nandini Palaniswamy
+ */
 public class ToDoItem {
-	
 	
 	private Long id;
 	

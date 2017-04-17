@@ -3,6 +3,10 @@ package org.todo.model;
 import java.util.ArrayList;
 import java.util.Map;
 
+/*
+ * Class holds ToDOItems List.
+ *  @author Nandini Palaniswamy 
+ */
 public class ToDoItems {
 	
 	private Map<String, ArrayList<ToDoItem>> toDoItems;

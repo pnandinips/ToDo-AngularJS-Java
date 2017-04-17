@@ -8,6 +8,11 @@ import org.todo.model.ToDoItem;
 import org.todo.model.ToDoItems;
 import org.springframework.stereotype.Service;
 
+/*
+ * Service Implementation
+ * 
+ *  @author Nandini Palaniswamy
+ */
 @Service("toDoService")
 public class ToDoServiceImpl implements ToDoService{
 	

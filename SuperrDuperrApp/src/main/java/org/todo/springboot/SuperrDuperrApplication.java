@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+ * REST API for SupperDuper APP.
+ * 
+ * @author Nandini Palaniswamy
+ *
+ */
 @SpringBootApplication(scanBasePackages={"org.todo"})
 @RestController
 public class SuperrDuperrApplication {
